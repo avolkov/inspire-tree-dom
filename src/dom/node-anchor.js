@@ -91,6 +91,7 @@ export default class NodeAnchor extends Component {
     render() {
         let node = this.props.node;
         let attributes = node.itree.a.attributes || {};
+        // My customizations111
         attributes.className = 'title icon';
         attributes.tabindex = 1;
         attributes.unselectable = 'on';
@@ -101,14 +102,15 @@ export default class NodeAnchor extends Component {
         }
 
         let content = node.text;
+        let href = node.href;
         if (node.editing()) {
             content = <EditForm dom={this.props.dom} node={this.props.node} />;
         }
 
         return (<a
+            href={ href }
             data-uid={node.id}
             onBlur={this.blur.bind(this)}
-            onClick={this.click.bind(this)}
             onContextMenu={this.contextMenu.bind(this)}
             onDblClick={this.dblclick.bind(this)}
             onFocus={this.focus.bind(this)}
